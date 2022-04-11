@@ -124,11 +124,20 @@ class PerformaceDetailsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _getHeaderPerformed(),
-          _getPatrimony(context),
-          _getPatrimonyCost(context),
-          _getDividendAomont(context),
-          _getTradeAomont(context),
-          _geProfitAomont(context),
+          Expanded(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _getPatrimony(context),
+                  _getPatrimonyCost(context),
+                  _getDividendAomont(context),
+                  _getTradeAomont(context),
+                  _geProfitAomont(context),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

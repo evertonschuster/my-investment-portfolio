@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'pages/home_page/home_page.dart';
+import 'package:my_investment_portfolio/App/app_context.dart';
+import 'package:my_investment_portfolio/App/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,12 +12,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    AppContext.context = context;
+
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-      ),
-      home: const HomePage(),
+      initialRoute: "/",
+      routes: Routes.getAppRoutes(),
+      theme: ThemeData.dark(),
+      navigatorKey: NavigatorApp.navigatorKey,
     );
   }
 }

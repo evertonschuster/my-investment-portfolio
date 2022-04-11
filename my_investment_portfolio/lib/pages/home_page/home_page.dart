@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_investment_portfolio/pages/home_page/home_controller.dart';
+import 'package:my_investment_portfolio/pages/home_page/widget/app_bar/app_bar_widget.dart';
 import 'package:my_investment_portfolio/pages/home_page/widget/historical_profitability/historical_profitability_card.dart';
 import 'package:my_investment_portfolio/pages/home_page/widget/performace/performace_card.dart';
 import 'package:my_investment_portfolio/pages/home_page/widget/portfolio_distribution/portfolio_distribution_card.dart';
@@ -11,21 +12,26 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: const Text("Seja bem vindo"),
-      ),
       body: ChangeNotifierProvider(
         create: (context) => HomeController.factory(),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              PerformaceCard(),
-              PortfolioDistributionCard(),
-              HistoricalProfitabilityCard(),
-            ],
-          ),
+        child: CustomScrollView(
+          slivers: [
+            const AppBarWidget(),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return Column(
+                    children: const [
+                      PerformaceCard(),
+                      PortfolioDistributionCard(),
+                      HistoricalProfitabilityCard(),
+                    ],
+                  );
+                },
+                childCount: 1,
+              ),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(

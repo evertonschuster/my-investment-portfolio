@@ -5,8 +5,9 @@ class Loading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CircularProgressIndicator(
+    return CircularProgressIndicator(
       semanticsLabel: 'Linear progress indicator',
+      color: Theme.of(context).primaryColor,
     );
   }
 }
